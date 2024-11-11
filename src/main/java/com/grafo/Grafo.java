@@ -106,7 +106,7 @@ public class Grafo {
         return -1;
     }
 
-    public void imprimirCamino(String origen, String destino){
+    public StringBuilder imprimirCamino(String origen, String destino){
        //Buscar la  id por nombres de los nodos
         int origenId = obtenerIdPorNombre(origen);
         int destinoId = obtenerIdPorNombre(destino);
@@ -116,27 +116,29 @@ public class Grafo {
        //Guarda el id de los nodos
         ArrayList<Integer> recorrido = new ArrayList<>();
 
-        imprimirCaminoRecursivo(path,origenId,destinoId,recorrido);
+        StringBuilder ruta = imprimirCaminoRecursivo(path,origenId,destinoId,recorrido);
+        return ruta;
     }
     //Buscar ruta mas corta
-    private void imprimirCaminoRecursivo(int[][] path, int origen, int destino, ArrayList<Integer> recorrido) {
+    private StringBuilder imprimirCaminoRecursivo(int[][] path, int origen, int destino, ArrayList<Integer> recorrido) {
         if (path[origen][destino] == 0) {
             recorrido.add(origen);
             recorrido.add(destino);
 
             System.out.println("Ruta optima :");
 
-            imprimirRutaPorIds(recorrido);
-            return;
+            StringBuilder ruta = imprimirRutaPorIds(recorrido);
+            return ruta;
         }
         int intermedio = path[origen][destino];
 
         recorrido.add(origen);
 
-        imprimirCaminoRecursivo(path, intermedio-1, destino,recorrido);
+        return imprimirCaminoRecursivo(path, intermedio-1, destino,recorrido);
+
     }
     //Metodo imprime  los nodos de un arrayList
-    private void imprimirRutaPorIds(ArrayList<Integer> recorrido) {
+    private StringBuilder imprimirRutaPorIds(ArrayList<Integer> recorrido) {
         StringBuilder ruta = new StringBuilder();
         for (int i = 0; i < recorrido.size(); i++) {
             Nodo nodo = nodos.get(recorrido.get(i));
@@ -146,6 +148,7 @@ public class Grafo {
             ruta.append(nodo.getNombre());
         }
         System.out.println(ruta.toString());
+        return  ruta;
     }
 
     //Imprimir matriz
@@ -160,6 +163,18 @@ public class Grafo {
             }
             System.out.println();
         }
+    }
+    public ArrayList<String> obtenerNombresNodos() {
+        ArrayList<String> nombres = new ArrayList<>();
+        for (Nodo nodo : nodos) {
+            nombres.add(nodo.getNombre());
+        }
+        return nombres;
+    }
+
+    // Método auxiliar para obtener la lista de nodos (si lo necesitas en otras partes de tu código)
+    public List<Nodo> getNodos() {
+        return nodos;
     }
     public int getIdCounter() {
         return idCounter;

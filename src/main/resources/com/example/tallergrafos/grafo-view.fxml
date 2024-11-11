@@ -3,9 +3,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<Pane fx:id="canva" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="188.0" prefWidth="417.0" style="-fx-background-color: #d4d4d4;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tallergrafos.grafoController">
    <children>
-      <Button layoutX="203.0" layoutY="129.0" mnemonicParsing="false" onAction="#xd" text="Button" />
+      <Button fx:id="verRuta_Btt" layoutX="304.0" layoutY="51.0" mnemonicParsing="false" onAction="#verRuta_BttAction" prefHeight="25.0" prefWidth="75.0" text="Ver ruta" />
+      <ComboBox fx:id="origen_ComboBox" layoutX="30.0" layoutY="51.0" onAction="#origen_comboBoxAction" prefHeight="25.0" prefWidth="113.0" />
+      <ComboBox fx:id="destino_ComboBox" layoutX="172.0" layoutY="51.0" onAction="#destino_comboBoxAction" prefWidth="113.0" />
+      <Label fx:id="origen_lbl" layoutX="36.0" layoutY="28.0" prefHeight="17.0" prefWidth="102.0" text="Origen" />
+      <Label fx:id="destino_lbl" layoutX="172.0" layoutY="28.0" prefHeight="17.0" prefWidth="113.0" text="Destino" />
+      <TextField fx:id="resultado_txt" layoutX="30.0" layoutY="85.0" prefHeight="53.0" prefWidth="356.0" />
    </children>
 </Pane>

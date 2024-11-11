@@ -1,5 +1,7 @@
 package com.grafo;
 
+import java.util.ArrayList;
+
 public class testGrafo {
 
     public static void main(String[] args) {
@@ -21,11 +23,11 @@ public class testGrafo {
         grafo.agregarArista("punto d", "punto b", 2);
         grafo.agregarArista("punto d", "punto c", 4);
 
-        //Camino mas corto
-        String origen ="punto c";
-        String destino ="punto d";
+        ArrayList<String> st = grafo.obtenerNombresNodos();
 
-        grafo.imprimirCamino(origen,destino);
+        for(String s : st){
+            System.out.println(s);
+        }
 
     }
 
